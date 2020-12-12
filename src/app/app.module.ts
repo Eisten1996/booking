@@ -11,6 +11,7 @@ import { CancelBookingComponent } from './components/cancel-booking/cancel-booki
 import { HeaderComponent } from './components/header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const appRoutes: Routes = [
   { path: '', component: ExploreComponent },
@@ -32,8 +33,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
     MatCardModule,
+    NgbModule,
   ],
-  exports: [MatCardModule],
   providers: [],
   bootstrap: [AppComponent],
 })
