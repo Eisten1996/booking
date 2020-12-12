@@ -8,6 +8,7 @@ import { CancelBookingComponent } from './components/cancel-booking/cancel-booki
 import { HeaderComponent } from './components/header/header.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ExploreComponent } from './components/explore/explore.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
   { path: '', component: ExploreComponent },
@@ -22,7 +23,7 @@ const appRoutes: Routes = [
     CancelBookingComponent,
     HeaderComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, RouterModule.forRoot(appRoutes)],
+  imports: [BrowserModule, AppRoutingModule, RouterModule.forRoot(appRoutes), BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
