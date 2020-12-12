@@ -1,14 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { RouterModule, Routes } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
+
+import { ExploreComponent } from './components/explore/explore.component';
 import { BookingComponent } from './components/booking/booking.component';
 import { CancelBookingComponent } from './components/cancel-booking/cancel-booking.component';
 import { HeaderComponent } from './components/header/header.component';
-import { RouterModule, Routes } from '@angular/router';
-import { ExploreComponent } from './components/explore/explore.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 
 const appRoutes: Routes = [
   { path: '', component: ExploreComponent },
@@ -22,8 +24,16 @@ const appRoutes: Routes = [
     BookingComponent,
     CancelBookingComponent,
     HeaderComponent,
+    ExploreComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, RouterModule.forRoot(appRoutes), BrowserAnimationsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule,
+    MatCardModule,
+  ],
+  exports: [MatCardModule],
   providers: [],
   bootstrap: [AppComponent],
 })
