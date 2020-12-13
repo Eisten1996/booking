@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/services/app.service';
-import { RestaurantLight } from 'src/app/shared/models/restaurant-light-models';
+import { LightRestaurant } from 'src/app/shared/models/light-restaurant-models';
 
 @Component({
   selector: 'app-explore',
@@ -8,11 +8,13 @@ import { RestaurantLight } from 'src/app/shared/models/restaurant-light-models';
   styleUrls: ['./explore.component.scss'],
 })
 export class ExploreComponent implements OnInit {
-  restaurants: RestaurantLight[];
+  restaurants: LightRestaurant[];
 
   constructor(private appService: AppService) {}
 
   ngOnInit(): void {
-    this.appService.getAllRestaurantsMock();
+    this.appService.getAllRestaurantsMock().subscribe((result) => {
+      this.restaurants = result;
+    });
   }
 }

@@ -1,6 +1,6 @@
-import { RestaurantLight } from './restaurant-light-models';
+import { LightRestaurant } from './light-restaurant-models';
 
-export class Restaurant extends RestaurantLight {
+export class Restaurant extends LightRestaurant {
   description: string;
   turns: any[];
 }
