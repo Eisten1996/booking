@@ -1,4 +1,4 @@
-export class RestaurantLight {
+export class LightRestaurant {
   id: number;
   name: string;
   image: string;
