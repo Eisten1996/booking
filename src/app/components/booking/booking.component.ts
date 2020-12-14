@@ -33,6 +33,6 @@ export class BookingComponent implements OnInit {
     });
   }
   sendBooking() {
-    console.log('sending booking');
+    console.log('sending booking', this.bookingForm.get('date').value);
   }
 }
