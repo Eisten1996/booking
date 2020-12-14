@@ -1,1 +1,11 @@
-<p>cancel-booking works!</p>
+<div class="container">
+  <h1>Cancelar reserva</h1>
+
+  <div>
+    <mat-form-field>
+      <mat-label>Introduce tu codigo de reservacion</mat-label>
+      <input matInput type="text" [(ngModel)]="codeReservation" />
+    </mat-form-field>
+  </div>
+  <button class="btn pull-right" type="button" mat-raised-button>Enviar</button>
+</div>

@@ -8,7 +8,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 
@@ -37,6 +37,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     ReactiveFormsModule,
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
