@@ -6,9 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cancel-booking.component.scss'],
 })
 export class CancelBookingComponent implements OnInit {
-  codeReservation: string;
+  codeReservation: string = 'GAAAAAA';
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  sendCancel() {
+    console.log(this.codeReservation);
+  }
 }
