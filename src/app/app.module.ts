@@ -6,6 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -38,6 +40,8 @@ const appRoutes: Routes = [
     MatCardModule,
     MatToolbarModule,
     MatButtonModule,
+    MatSelectModule,
+    MatDatepickerModule,
     NgbModule,
   ],
   providers: [],

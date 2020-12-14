@@ -7,10 +7,45 @@
 ></div>
 <div class="container">
   <div class="row">
-    <div>
+    <div class="col-sm-12 col-md-6">
       <h1>Restaurant de Juan</h1>
       <p>Av Peru</p>
       <p>Mejor Restaurante de la zona con terraza</p>
+    </div>
+    <div class="container col-sm-12 col-md-6">
+      <form [formGroup]="bookingForm" (ngSubmit)="sendBooking()">
+        <h1>Realiza tu reserva</h1>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Personas</mat-label>
+            <input type="number" formControlName="customers" matInput />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label></mat-label>
+            <mat-select [formControl]="toppings" multiple>
+              <mat-option
+                *ngFor="let topping of toppingList"
+                [value]="topping"
+                >{{ topping }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Día</mat-label>
+            <input matInput [matDatepicker]="picker" />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div clas="text-right">
+          <button type="submit" mat-button color="primary">
+            Enviar Reserva
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
