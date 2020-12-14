@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { Booking } from '../shared/models/booking-models';
@@ -18,6 +18,18 @@ export class AppService {
 
   createReservation(booking: Booking) {
     return this.http.post(API + 'reservation', booking);
+  }
+
+  cancelReservation(reservationCode: string) {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'aplication/json',
+      }),
+    };
+    return this.http.delete(
+      API + 'reservation?locator=' + reservationCode,
+      options
+    );
   }
 
   getAllRestaurantsMock() {
