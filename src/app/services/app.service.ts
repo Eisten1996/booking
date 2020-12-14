@@ -1,12 +1,19 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { LightRestaurant } from '../shared/models/light-restaurant-models';
+
+const API = 'http://localhost:8080/booking-restaurant/v1/';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AppService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
+
+  getAllRestaurants() {
+    return this.http.get(API + 'restaurants');
+  }
 
   getAllRestaurantsMock() {
     const restaurants: LightRestaurant[] = [];

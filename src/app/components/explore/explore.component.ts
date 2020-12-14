@@ -13,10 +13,10 @@ export class ExploreComponent implements OnInit {
   constructor(private appService: AppService) {}
 
   ngOnInit(): void {
-    this.appService.getAllRestaurantsMock().subscribe((result: any) => {
-      console.log(result);
+    this.appService.getAllRestaurants().subscribe((result: any) => {
+      console.log(result.data);
 
-      this.restaurants = result;
+      this.restaurants = result.data;
     });
   }
 }
