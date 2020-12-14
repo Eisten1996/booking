@@ -8,6 +8,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -33,6 +36,7 @@ const appRoutes: Routes = [
     ExploreComponent,
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
@@ -42,6 +46,8 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatSelectModule,
     MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
     NgbModule,
   ],
   providers: [],

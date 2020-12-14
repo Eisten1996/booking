@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-booking',
@@ -8,7 +8,7 @@ import { FormControl } from '@angular/forms';
 })
 export class BookingComponent implements OnInit {
   toppings = new FormControl();
-  bookingForm = new FormControl();
+  bookingForm;
 
   toppingList: string[] = [
     'Extra cheese',
@@ -19,7 +19,20 @@ export class BookingComponent implements OnInit {
     'Tomato',
   ];
 
-  constructor() {}
+  constructor(private fb: FormBuilder) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.initForm();
+  }
+
+  initForm() {
+    this.bookingForm = this.fb.group({
+      date: [new Date(), Validators.required],
+      time: ['', Validators.required],
+      customers: ['', Validators.required],
+    });
+  }
+  sendBooking() {
+    console.log('sending booking');
+  }
 }
