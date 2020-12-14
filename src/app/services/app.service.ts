@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
+import { Booking } from '../shared/models/booking-models';
 import { LightRestaurant } from '../shared/models/light-restaurant-models';
 
 const API = 'http://localhost:8080/booking-restaurant/v1/';
@@ -13,6 +14,10 @@ export class AppService {
 
   getAllRestaurants() {
     return this.http.get(API + 'restaurants');
+  }
+
+  createReservation(booking: Booking) {
+    return this.http.post(API + 'reservation', booking);
   }
 
   getAllRestaurantsMock() {
