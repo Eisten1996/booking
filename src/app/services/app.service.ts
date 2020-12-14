@@ -1,12 +1,36 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
+import { Booking } from '../shared/models/booking-models';
 import { LightRestaurant } from '../shared/models/light-restaurant-models';
+
+const API = 'http://localhost:8080/booking-restaurant/v1/';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AppService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
+
+  getAllRestaurants() {
+    return this.http.get(API + 'restaurants');
+  }
+
+  createReservation(booking: Booking) {
+    return this.http.post(API + 'reservation', booking);
+  }
+
+  cancelReservation(reservationCode: string) {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'aplication/json',
+      }),
+    };
+    return this.http.delete(
+      API + 'reservation?locator=' + reservationCode,
+      options
+    );
+  }
 
   getAllRestaurantsMock() {
     const restaurants: LightRestaurant[] = [];
