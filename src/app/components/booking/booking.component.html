@@ -1,12 +1,12 @@
 <div class="restaurantImage">
-  <img src="{{ restaurant.image }}" alt="{{ restaurant.name }}" />
+  <img src="{{ restaurant?.image }}" alt="{{ restaurant?.name }}" />
 </div>
 <div class="container p-3">
   <div class="row">
     <div class="col-sm-12 col-md-6">
-      <h1>{{ restaurant.name }}</h1>
-      <p>{{ restaurant.address }}</p>
-      <p>{{ restaurant.description }}</p>
+      <h1>{{ restaurant?.name }}</h1>
+      <p>{{ restaurant?.address }}</p>
+      <p>{{ restaurant?.description }}</p>
     </div>
     <div class="container col-sm-12 col-md-6">
       <form
@@ -24,7 +24,7 @@
             <mat-label>Turno</mat-label>
             <mat-select formControlName="time">
               <mat-option
-                *ngFor="let turn of restaurant.turns"
+                *ngFor="let turn of restaurant?.turns"
                 [value]="turn.id"
                 >{{ turn.name }}</mat-option
               >
