@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { AppService } from 'src/app/services/app.service';
 import { Booking } from 'src/app/shared/models/booking-models';
 
@@ -11,6 +12,7 @@ import { Booking } from 'src/app/shared/models/booking-models';
 export class BookingComponent implements OnInit {
   toppings = new FormControl();
   bookingForm;
+  restaurant;
   booking = new Booking();
   private idRestaurant: number;
 
@@ -23,9 +25,15 @@ export class BookingComponent implements OnInit {
     'Tomato',
   ];
 
-  constructor(private fb: FormBuilder, private service: AppService) {}
+  constructor(
+    private fb: FormBuilder,
+    private service: AppService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
+    this.idRestaurant = Number(this.route.snapshot.paramMap.get('id'));
+    this.getRestaurant();
     this.initForm();
   }
 
@@ -35,6 +43,10 @@ export class BookingComponent implements OnInit {
       time: ['', Validators.required],
       customers: ['', Validators.required],
     });
+  }
+
+  getRestaurant() {
+    this.restaurant = this.service.getRestaurant();
   }
 
   setBooking() {

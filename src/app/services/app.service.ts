@@ -53,4 +53,8 @@ export class AppService {
     restaurants.push(restaurant2);
     return of(restaurants);
   }
+
+  getRestaurant(){
+
+  }
 }
