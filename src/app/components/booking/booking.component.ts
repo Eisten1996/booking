@@ -3,6 +3,8 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AppService } from 'src/app/services/app.service';
 import { Booking } from 'src/app/shared/models/booking-models';
+import { LightRestaurant } from 'src/app/shared/models/light-restaurant-models';
+import { Restaurant } from 'src/app/shared/models/restaurant-models';
 
 @Component({
   selector: 'app-booking',
@@ -12,7 +14,7 @@ import { Booking } from 'src/app/shared/models/booking-models';
 export class BookingComponent implements OnInit {
   toppings = new FormControl();
   bookingForm;
-  restaurant;
+  restaurant: Restaurant;
   booking = new Booking();
   private idRestaurant: number;
 
@@ -34,6 +36,7 @@ export class BookingComponent implements OnInit {
   ngOnInit(): void {
     this.idRestaurant = Number(this.route.snapshot.paramMap.get('id'));
     this.getRestaurant();
+
     this.initForm();
   }
 
@@ -46,7 +49,12 @@ export class BookingComponent implements OnInit {
   }
 
   getRestaurant() {
-    this.restaurant = this.service.getRestaurant();
+    this.service.getRestaurant(this.idRestaurant).subscribe((result: any) => {
+      console.log(result.data);
+
+      this.restaurant = result.data;
+      console.log(this.restaurant);
+    });
   }
 
   setBooking() {
