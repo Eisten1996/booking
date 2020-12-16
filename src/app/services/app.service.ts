@@ -32,6 +32,9 @@ export class AppService {
     );
   }
 
+  getRestaurant(id: number) {
+    return this.http.get(API + 'restaurant/' + id);
+  }
   getAllRestaurantsMock() {
     const restaurants: LightRestaurant[] = [];
     let restaurant = new LightRestaurant();

@@ -24,7 +24,7 @@ import { AppComponent } from './app.component';
 
 const appRoutes: Routes = [
   { path: '', component: ExploreComponent },
-  { path: 'booking', component: BookingComponent },
+  { path: 'booking/:id', component: BookingComponent },
   { path: 'cancel', component: CancelBookingComponent },
 ];
 

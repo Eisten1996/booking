@@ -14,7 +14,9 @@
           <mat-card-subtitle>{{ restaurant.address }}</mat-card-subtitle>
         </mat-card-content>
         <mat-card-actions align="end">
-          <button mat-raised-button>RESERVAR</button>
+          <button mat-raised-button [routerLink]="['booking', restaurant.id]">
+            RESERVAR
+          </button>
         </mat-card-actions>
       </mat-card>
     </div>
