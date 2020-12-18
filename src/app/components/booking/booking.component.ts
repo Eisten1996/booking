@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { AppService } from 'src/app/services/app.service';
+import { InfoDialogComponent } from 'src/app/shared/dialogs/info-dialog/info-dialog.component';
 import { Booking } from 'src/app/shared/models/booking-models';
 import { LightRestaurant } from 'src/app/shared/models/light-restaurant-models';
 import { Restaurant } from 'src/app/shared/models/restaurant-models';
@@ -30,7 +32,8 @@ export class BookingComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private service: AppService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -67,7 +70,21 @@ export class BookingComponent implements OnInit {
     this.setBooking();
     this.service.createReservation(this.booking).subscribe((result: any) => {
       console.log(result.data);
+      const title = 'Codigo de Reserva: ' + result.data;
+      const info =
+        'Necesitaras el codigo para poder acceder al restaurant o cancelar la reserva. Por favor guardalo';
+      this.openDialog(title, info);
     });
-    console.log('sending booking', this.bookingForm.get('date').value);
+  }
+
+  openDialog(title: String, info: String): void {
+    const dialogRef = this.dialog.open(InfoDialogComponent, {
+      width: '250px',
+      data: { title: title, info: info },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+    });
   }
 }
