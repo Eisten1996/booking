@@ -7,14 +7,18 @@ import { AppService } from 'src/app/services/app.service';
   styleUrls: ['./cancel-booking.component.scss'],
 })
 export class CancelBookingComponent implements OnInit {
-  codeReservation: string = 'GAAAAAA';
+  codeReservation: string = '';
+  state: string = 'La reserva aun no ha sido cancelada';
 
   constructor(private service: AppService) {}
 
   ngOnInit(): void {}
 
   sendCancel() {
-    this.service.cancelReservation(this.codeReservation);
-    console.log(this.codeReservation);
+    this.service.cancelReservation(this.codeReservation).subscribe((result) => {
+      this.state = 'La reserva se ha cancelado con exito ';
+      console.log(result);
+      this.codeReservation = '';
+    });
   }
 }

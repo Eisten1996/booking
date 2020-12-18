@@ -1,6 +1,9 @@
-<div class="restaurantImage">
-  <img src="{{ restaurant?.image }}" alt="{{ restaurant?.name }}" />
-</div>
+<div
+  class="restaurantImage"
+  [ngStyle]="{
+    'background-image': 'url(' + restaurant?.image + ')'
+  }"
+></div>
 <div class="container p-3">
   <div class="row">
     <div class="col-sm-12 col-md-6">
