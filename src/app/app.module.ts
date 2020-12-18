@@ -22,6 +22,7 @@ import { CancelBookingComponent } from './components/cancel-booking/cancel-booki
 import { HeaderComponent } from './components/header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { InfoDialogComponent } from './shared/dialogs/info-dialog/info-dialog.component';
 
 const appRoutes: Routes = [
   { path: '', component: ExploreComponent },
@@ -36,6 +37,7 @@ const appRoutes: Routes = [
     CancelBookingComponent,
     HeaderComponent,
     ExploreComponent,
+    InfoDialogComponent,
   ],
   imports: [
     ReactiveFormsModule,
