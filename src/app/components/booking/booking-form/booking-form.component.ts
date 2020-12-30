@@ -23,7 +23,9 @@ export class BookingFormComponent implements OnInit {
     public dialog: MatDialog
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.initForm();
+  }
 
   sendBooking() {
     this.setBooking();
