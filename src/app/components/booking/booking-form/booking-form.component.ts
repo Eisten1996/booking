@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { InfoDialogComponent } from 'src/app/shared/dialogs/info-dialog/info-dialog.component';
@@ -13,9 +13,8 @@ import { Restaurant } from './../../../shared/models/restaurant-models';
 })
 export class BookingFormComponent implements OnInit {
   bookingForm;
-  restaurant: Restaurant;
+  @Input() restaurant: Restaurant;
   booking = new Booking();
-  private idRestaurant: number;
 
   constructor(
     private fb: FormBuilder,
@@ -39,10 +38,11 @@ export class BookingFormComponent implements OnInit {
   }
 
   setBooking() {
-    this.booking.restaurantId = this.idRestaurant;
+    this.booking.restaurantId = this.restaurant.id;
     this.booking.turnId = this.bookingForm.get('time').value;
     this.booking.date = this.bookingForm.get('date').value;
     this.booking.person = this.bookingForm.get('customers').value;
+    this.booking.price = this.restaurant.price;
   }
 
   openDialog(title: String, info: String): void {

@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { AppService } from 'src/app/services/app.service';
-import { Booking } from 'src/app/shared/models/booking-models';
 import { Restaurant } from 'src/app/shared/models/restaurant-models';
+import { BookingFormComponent } from './booking-form/booking-form.component';
 
 @Component({
   selector: 'app-booking',
@@ -12,13 +11,12 @@ import { Restaurant } from 'src/app/shared/models/restaurant-models';
   styleUrls: ['./booking.component.scss'],
 })
 export class BookingComponent implements OnInit {
-  bookingForm;
+  @ViewChild(BookingFormComponent) bookingForm: BookingFormComponent;
+
   restaurant: Restaurant;
-  booking = new Booking();
   private idRestaurant: number;
 
   constructor(
-    private fb: FormBuilder,
     private service: AppService,
     private route: ActivatedRoute,
     public dialog: MatDialog
@@ -31,10 +29,8 @@ export class BookingComponent implements OnInit {
 
   getRestaurant() {
     this.service.getRestaurant(this.idRestaurant).subscribe((result: any) => {
-      console.log(result.data);
-
+      this.bookingForm.restaurant = result.data;
       this.restaurant = result.data;
-      console.log(this.restaurant);
     });
   }
 }
