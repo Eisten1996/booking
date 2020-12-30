@@ -23,6 +23,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InfoDialogComponent } from './shared/dialogs/info-dialog/info-dialog.component';
+import { BookingFormComponent } from './components/booking/booking-form/booking-form.component';
 
 const appRoutes: Routes = [
   { path: '', component: ExploreComponent },
@@ -38,6 +39,7 @@ const appRoutes: Routes = [
     HeaderComponent,
     ExploreComponent,
     InfoDialogComponent,
+    BookingFormComponent,
   ],
   imports: [
     ReactiveFormsModule,
