@@ -4,4 +4,6 @@ export class Booking {
   turnId: number;
   person: number;
   price: number;
+  email: string;
+  name: string;
 }
