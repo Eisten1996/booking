@@ -3,4 +3,7 @@ export class Booking {
   date: Date;
   turnId: number;
   person: number;
+  price: number;
+  email: string;
+  name: string;
 }

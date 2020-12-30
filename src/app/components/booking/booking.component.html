@@ -12,48 +12,7 @@
       <p>{{ restaurant?.description }}</p>
     </div>
     <div class="container col-sm-12 col-md-6">
-      <form
-        class="booking-form"
-        [formGroup]="bookingForm"
-        (ngSubmit)="sendBooking()"
-      >
-        <h1>Realiza tu reserva</h1>
-        <div>
-          <mat-form-field appearance="fill">
-            <mat-label>Personas</mat-label>
-            <input type="number" formControlName="customers" matInput />
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Turno</mat-label>
-            <mat-select formControlName="time">
-              <mat-option
-                *ngFor="let turn of restaurant?.turns"
-                [value]="turn.id"
-                >{{ turn.name }}</mat-option
-              >
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Día</mat-label>
-            <input matInput [matDatepicker]="date" formControlName="date" />
-            <mat-datepicker-toggle
-              matSuffix
-              [for]="date"
-            ></mat-datepicker-toggle>
-            <mat-datepicker #date></mat-datepicker>
-          </mat-form-field>
-        </div>
-        <div class="text-right">
-          <button
-            type="submit"
-            mat-raised-button
-            color="primary"
-            [disabled]="!bookingForm.valid"
-          >
-            Enviar Reserva
-          </button>
-        </div>
-      </form>
+      <app-booking-form [restaurant]="restaurant"></app-booking-form>
     </div>
   </div>
 </div>

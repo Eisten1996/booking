@@ -23,3 +23,5 @@
 ### Sección 24: Bindeado simple
 
 ### Sección 25: Dialgos
+
+### Sección 32: Acceder a componente hijo - ViewChild
