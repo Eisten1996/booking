@@ -42,6 +42,8 @@ export class BookingFormComponent implements OnInit {
     this.booking.turnId = this.bookingForm.get('time').value;
     this.booking.date = this.bookingForm.get('date').value;
     this.booking.person = this.bookingForm.get('customers').value;
+    this.booking.email = this.bookingForm.get('email').value;
+    this.booking.name = this.bookingForm.get('name').value;
     this.booking.price = this.restaurant.price;
   }
 
