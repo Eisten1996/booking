@@ -5,9 +5,10 @@
   background-position: center;
 }
 .restaurantBackground {
-  height: 25vw;
-  background-repeat: no-repeat;
+  height: 95%;
   background-size: cover;
   background-position: center;
   min-height: 630px;
+  width: 100%;
+  background-attachment: fixed;
 }
