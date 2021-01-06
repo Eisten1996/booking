@@ -61,6 +61,8 @@ export class BookingFormComponent implements OnInit {
       date: [new Date(), Validators.required],
       time: ['', Validators.required],
       customers: ['', Validators.required],
+      email: ['', Validators.required],
+      name: ['', Validators.required],
     });
   }
 }

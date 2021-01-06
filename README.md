@@ -25,3 +25,6 @@
 ### Sección 25: Dialgos
 
 ### Sección 32: Acceder a componente hijo - ViewChild
+
+
+### Sección 33: Mejoramos UI de Booking Form
