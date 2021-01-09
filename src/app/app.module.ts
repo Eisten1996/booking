@@ -13,6 +13,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatStepperModule } from '@angular/material/stepper';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -60,6 +61,7 @@ const appRoutes: Routes = [
     MatNativeDateModule,
     MatInputModule,
     MatDialogModule,
+    MatStepperModule,
     NgbModule,
   ],
   providers: [],
