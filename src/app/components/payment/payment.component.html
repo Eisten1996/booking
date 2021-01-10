@@ -1,8 +1,18 @@
 <mat-card>
   <mat-horizontal-stepper linear #stepper>
     <mat-step label="Pagar" [editable]="false">
-      <div>PAGO</div>
-      <button mat-button matStepperNext color="primary">Siguiente</button>
+      <form novalidate (ngSubmit)="buy()" [formGroup]="stripeTest">
+        <input
+          type="text"
+          formControlName="name"
+          placeholder="Nombre y apellido"
+        />
+        <ngx-stripe-card
+          [options]="cardOptions"
+          [elementsOptions]="elementsOptions"
+        ></ngx-stripe-card>
+        <button type="submit" mat-button color="primary">Siguiente</button>
+      </form>
     </mat-step>
     <mat-step label="Resumen" [editable]="false">
       <div>
@@ -11,8 +21,17 @@
         <h3>Coste:</h3>
         <h3>Codigo de reserva:</h3>
       </div>
-      <button mat-button (click)="cancel()" matStepperPrevious color="secondary">Cancelar</button>
-      <button mat-button (click)="confirm()" matStepperNext color="primary">Confirmar</button>
+      <button
+        mat-button
+        (click)="cancel()"
+        matStepperPrevious
+        color="secondary"
+      >
+        Cancelar
+      </button>
+      <button mat-button (click)="confirm()" matStepperNext color="primary">
+        Confirmar
+      </button>
     </mat-step>
     <mat-step label="Resultado" [editable]="false">
       <h1>Mensaje informativo</h1>
