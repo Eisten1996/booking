@@ -13,6 +13,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatStepperModule } from '@angular/material/stepper';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -24,11 +25,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InfoDialogComponent } from './shared/dialogs/info-dialog/info-dialog.component';
 import { BookingFormComponent } from './components/booking/booking-form/booking-form.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 const appRoutes: Routes = [
   { path: '', component: ExploreComponent },
   { path: 'booking/:id', component: BookingComponent },
   { path: 'cancel', component: CancelBookingComponent },
+  { path: 'payment', component: PaymentComponent },
 ];
 
 @NgModule({
@@ -40,6 +43,7 @@ const appRoutes: Routes = [
     ExploreComponent,
     InfoDialogComponent,
     BookingFormComponent,
+    PaymentComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -57,6 +61,7 @@ const appRoutes: Routes = [
     MatNativeDateModule,
     MatInputModule,
     MatDialogModule,
+    MatStepperModule,
     NgbModule,
   ],
   providers: [],

@@ -1,6 +1,8 @@
+import { PaymentService } from './../../../services/payment.service';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { InfoDialogComponent } from 'src/app/shared/dialogs/info-dialog/info-dialog.component';
 import { AppService } from './../../../services/app.service';
 import { Booking } from './../../../shared/models/booking-models';
@@ -19,7 +21,9 @@ export class BookingFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private service: AppService,
-    public dialog: MatDialog
+    private paymentService: PaymentService,
+    public dialog: MatDialog,
+    public router: Router
   ) {}
 
   ngOnInit(): void {
@@ -29,7 +33,6 @@ export class BookingFormComponent implements OnInit {
   sendBooking() {
     this.setBooking();
     this.service.createReservation(this.booking).subscribe((result: any) => {
-      console.log(result.data);
       const title = 'Codigo de Reserva: ' + result.data;
       const info =
         'Necesitaras el codigo para poder acceder al restaurant o cancelar la reserva. Por favor guardalo';
@@ -65,6 +68,14 @@ export class BookingFormComponent implements OnInit {
       customers: ['', Validators.required],
       email: ['', Validators.required],
       name: ['', Validators.required],
+    });
+  }
+
+  payBooking() {
+    this.setBooking();
+    this.service.createReservation(this.booking).subscribe((result: any) => {
+      this.paymentService.setBooked({ ...this.booking, locator: result.data });
+      this.router.navigate(['payment']);
     });
   }
 }
