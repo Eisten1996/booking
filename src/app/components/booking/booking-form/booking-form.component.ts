@@ -1,3 +1,4 @@
+import { PaymentService } from './../../../services/payment.service';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -20,6 +21,7 @@ export class BookingFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private service: AppService,
+    private paymentService: PaymentService,
     public dialog: MatDialog,
     public router: Router
   ) {}
@@ -72,7 +74,8 @@ export class BookingFormComponent implements OnInit {
   payBooking() {
     this.setBooking();
     this.service.createReservation(this.booking).subscribe((result: any) => {
-      this.router.navigate(['payment'])
+      this.paymentService.setBooked({ ...this.booking, locator: result.data });
+      this.router.navigate(['payment']);
     });
   }
 }
