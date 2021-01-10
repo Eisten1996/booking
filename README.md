@@ -29,3 +29,5 @@
 ### Sección 33: Mejoramos UI de Booking Form
 
 ### Sección 34: Stepper
+
+### Sección 35: Pago con tarjeta
