@@ -39,6 +39,7 @@ export class PaymentComponent implements OnInit {
   stripeTest: FormGroup;
   booked: Booked;
   bookedConfirm: String;
+  successMessage = 'Espera....';
 
   constructor(
     private fb: FormBuilder,
