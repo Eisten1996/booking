@@ -38,7 +38,7 @@ export class PaymentComponent implements OnInit {
 
   stripeTest: FormGroup;
   booked: Booked;
-  bookedConfirm: String;
+  bookedConfirm: string;
   successMessage = 'Espera....';
 
   constructor(
@@ -54,7 +54,15 @@ export class PaymentComponent implements OnInit {
     });
   }
 
-  cancel() {}
+  cancel() {
+    this.paymentService
+      .cancel(this.bookedConfirm)
+      .subscribe(
+        (result: any) =>
+          (this.successMessage =
+            'pago cancelado con exito. Mire su bandeja de entrada')
+      );
+  }
 
   confirm() {}
 

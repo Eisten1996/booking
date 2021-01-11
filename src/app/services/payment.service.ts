@@ -21,4 +21,8 @@ export class PaymentService {
   buy(payment: PaymentIntent) {
     return this.http.post(this.API + 'paymentIntent', payment);
   }
+
+  cancel(id: string) {
+    return this.http.post(this.API + 'cancel/' + 'id', {});
+  }
 }
