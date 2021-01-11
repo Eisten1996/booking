@@ -1,4 +1,5 @@
-import { PaymentIntent } from './../../shared/models/payment-model';
+import { PaymentService } from './../../services/payment.service';
+import { PaymentIntent, Booked } from './../../shared/models/payment-model';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
@@ -36,10 +37,16 @@ export class PaymentComponent implements OnInit {
   };
 
   stripeTest: FormGroup;
+  booked: Booked;
 
-  constructor(private fb: FormBuilder, private stripeService: StripeService) {}
+  constructor(
+    private fb: FormBuilder,
+    private stripeService: StripeService,
+    private paymentService: PaymentService
+  ) {}
 
   ngOnInit(): void {
+    this.booked = this.paymentService.getBooked();
     this.stripeTest = this.fb.group({
       name: ['', [Validators.required]],
     });
