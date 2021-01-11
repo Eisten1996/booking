@@ -1,3 +1,4 @@
+import { PaymentIntent } from './../../shared/models/payment-model';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
@@ -48,5 +49,21 @@ export class PaymentComponent implements OnInit {
 
   confirm() {}
 
-  buy() {}
+  buy(): void {
+    const name = this.stripeTest.get('name').value;
+    this.stripeService
+      .createToken(this.card.getCard(), { name })
+      .subscribe((result) => {
+        if (result.token) {
+          // Use the token
+          const paymentIntent: PaymentIntent = {
+            description: this.booked.name + ': ' + this.booked.locator,
+            price: this.booked.price,
+          };
+        } else if (result.error) {
+          // Error creating the token
+          console.log(result.error.message);
+        }
+      });
+  }
 }
