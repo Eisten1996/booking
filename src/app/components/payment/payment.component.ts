@@ -38,6 +38,7 @@ export class PaymentComponent implements OnInit {
 
   stripeTest: FormGroup;
   booked: Booked;
+  bookedConfirm: String;
 
   constructor(
     private fb: FormBuilder,
@@ -67,10 +68,17 @@ export class PaymentComponent implements OnInit {
             description: this.booked.name + ': ' + this.booked.locator,
             price: this.booked.price,
           };
+          this.executeIntent(paymentIntent);
         } else if (result.error) {
           // Error creating the token
           console.log(result.error.message);
         }
       });
+  }
+
+  executeIntent(payment: PaymentIntent) {
+    this.paymentService
+      .buy(payment)
+      .subscribe((result: any) => (this.bookedConfirm = result.id));
   }
 }

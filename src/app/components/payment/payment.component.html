@@ -11,7 +11,9 @@
           [options]="cardOptions"
           [elementsOptions]="elementsOptions"
         ></ngx-stripe-card>
-        <button type="submit" mat-button color="primary">Siguiente</button>
+        <button type="submit" matStepperNext mat-button color="primary">
+          Siguiente
+        </button>
       </form>
     </mat-step>
     <mat-step label="Resumen" [editable]="false">
