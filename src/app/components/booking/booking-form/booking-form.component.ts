@@ -50,7 +50,7 @@ export class BookingFormComponent implements OnInit {
     this.booking.price = this.restaurant.price;
   }
 
-  openDialog(title: String, info: String): void {
+  openDialog(title: string, info: string): void {
     const dialogRef = this.dialog.open(InfoDialogComponent, {
       width: '250px',
       data: { title: title, info: info },

@@ -1,4 +1,16 @@
 import { Booking } from './booking-models';
 export class Booked extends Booking {
-  locator: String;
+  locator: string;
+}
+
+export interface PaymentIntent {
+  description: string;
+  price: Number;
+}
+
+export interface PaymentConfirm {
+  email: string;
+  locator: string;
+  name: string;
+  paymentId: string;
 }

@@ -26,6 +26,7 @@ import { AppComponent } from './app.component';
 import { InfoDialogComponent } from './shared/dialogs/info-dialog/info-dialog.component';
 import { BookingFormComponent } from './components/booking/booking-form/booking-form.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { NgxStripeModule } from 'ngx-stripe';
 
 const appRoutes: Routes = [
   { path: '', component: ExploreComponent },
@@ -63,6 +64,9 @@ const appRoutes: Routes = [
     MatDialogModule,
     MatStepperModule,
     NgbModule,
+    NgxStripeModule.forRoot(
+      'pk_test_51I380WGEXPxp8XoLvp0dgaHlrlzvAYTUE4XnwgU3htKCzlmUbjaqb8CPOrvosnd6HiIO9oJAjYNCZqgKDMq3VIli00bnoJcX0d'
+    ),
   ],
   providers: [],
   bootstrap: [AppComponent],
