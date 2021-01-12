@@ -1,5 +1,9 @@
 import { PaymentService } from './../../services/payment.service';
-import { PaymentIntent, Booked } from './../../shared/models/payment-model';
+import {
+  PaymentIntent,
+  Booked,
+  PaymentConfirm,
+} from './../../shared/models/payment-model';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
@@ -60,11 +64,25 @@ export class PaymentComponent implements OnInit {
       .subscribe(
         (result: any) =>
           (this.successMessage =
-            'pago cancelado con exito. Mire su bandeja de entrada')
+            'Pago cancelado con exito. Mire su bandeja de entrada')
       );
   }
 
-  confirm() {}
+  confirm() {
+    const paymentConfirm: PaymentConfirm = {
+      email: this.booked.email,
+      locator: this.booked.locator,
+      name: this.booked.name,
+      paymentId: this.bookedConfirm,
+    };
+    this.paymentService
+      .confirm(paymentConfirm)
+      .subscribe(
+        (result: any) =>
+          (this.successMessage =
+            'Pago confirmado con exito. Mire su bandeja de entrada')
+      );
+  }
 
   buy(): void {
     const name = this.stripeTest.get('name').value;

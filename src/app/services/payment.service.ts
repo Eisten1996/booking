@@ -1,6 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Booked, PaymentIntent } from './../shared/models/payment-model';
+import {
+  Booked,
+  PaymentIntent,
+  PaymentConfirm,
+} from './../shared/models/payment-model';
 
 @Injectable({
   providedIn: 'root',
@@ -24,5 +28,9 @@ export class PaymentService {
 
   cancel(id: string) {
     return this.http.post(this.API + 'cancel/' + 'id', {});
+  }
+
+  confirm(paymentConfirm: PaymentConfirm) {
+    return this.http.post(this.API + 'confirm/', paymentConfirm);
   }
 }
