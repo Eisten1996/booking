@@ -11,7 +11,7 @@ import {
 })
 export class PaymentService {
   private booked: Booked;
-  private API = 'http://localhost:8080/booking-restaurant/v1/';
+  private API = 'https://booking-restaurant-app.herokuapp.com/booking-restaurant/v1/';
 
   constructor(private http: HttpClient) {}
 
